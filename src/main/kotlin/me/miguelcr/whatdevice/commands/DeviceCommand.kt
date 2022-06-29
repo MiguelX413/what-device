@@ -17,7 +17,8 @@ class DeviceCommand(val floodgateApi: FloodgateApi) : CommandExecutor {
                 return false
             }
         } else {
-            Bukkit.getServer().getPlayerExact(args[0]) ?: sender.sendMessage("Could not find player"); return false
+            Bukkit.getServer().getPlayerExact(args[0])
+                ?: run { sender.sendMessage("Could not find player"); return false }
         }
 
         sender.sendMessage(floodgateApi.getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java")
