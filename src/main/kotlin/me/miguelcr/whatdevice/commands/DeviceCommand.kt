@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.geysermc.floodgate.api.FloodgateApi
 
-class DeviceCommand(val floodgateApi: FloodgateApi) : CommandExecutor {
+class DeviceCommand(private val floodgateApi: FloodgateApi) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val player: Player = if (args.isEmpty()) {
@@ -18,7 +18,10 @@ class DeviceCommand(val floodgateApi: FloodgateApi) : CommandExecutor {
             }
         } else {
             Bukkit.getServer().getPlayerExact(args[0])
-                ?: run { sender.sendMessage("Could not find player"); return false }
+                ?: run {
+                    sender.sendMessage("Could not find player")
+                    return false
+                }
         }
 
         sender.sendMessage("${player.displayName}'s device: ${floodgateApi.getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java"}")
