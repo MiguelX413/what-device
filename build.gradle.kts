@@ -1,6 +1,7 @@
 plugins {
     java
     id("org.jetbrains.kotlin.jvm") version "1.7.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "me.miguelcr"
