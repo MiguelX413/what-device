@@ -1,0 +1,7 @@
+name: WhatDevice
+version: '${version}'
+main: me.miguelcr.whatdevice.WhatDevice
+api-version: 1.18
+authors: [ MiguelX413 ]
+description: Find out what device a Floodgate player is on
+website: https://miguelcr.me
