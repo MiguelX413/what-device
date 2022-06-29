@@ -6,3 +6,7 @@ depend: [ floodgate ]
 authors: [ MiguelX413 ]
 description: Find out what device a Floodgate player is on
 website: https://miguelcr.me
+commands:
+  device:
+    description: Find a Floodgate player's device
+    usage: /device <Player>
