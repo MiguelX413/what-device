@@ -16,10 +16,15 @@ repositories {
         name = "sonatype"
         url = uri("https://oss.sonatype.org/content/groups/public/")
     }
+    maven {
+        name = "opencollab-snapshot"
+        url = uri("https://repo.opencollab.dev/maven-snapshots/")
+    }
 }
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("org.geysermc.floodgate:api:2.0-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
