@@ -21,7 +21,7 @@ class DeviceCommand(val floodgateApi: FloodgateApi) : CommandExecutor {
                 ?: run { sender.sendMessage("Could not find player"); return false }
         }
 
-        sender.sendMessage(floodgateApi.getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java")
+        sender.sendMessage("${player.displayName}'s device: ${floodgateApi.getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java"}")
         return true
     }
 }
