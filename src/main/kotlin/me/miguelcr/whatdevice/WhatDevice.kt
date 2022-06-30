@@ -9,6 +9,7 @@ class WhatDevice : JavaPlugin() {
         // Plugin startup logic
         val floodgateApi = FloodgateApi.getInstance()
         getCommand("device")?.setExecutor(DeviceCommand(floodgateApi))
+        server.pluginManager.registerEvents(JoinListener(logger, floodgateApi), this)
     }
 
     override fun onDisable() {
