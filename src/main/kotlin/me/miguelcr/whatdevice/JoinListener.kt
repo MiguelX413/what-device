@@ -9,9 +9,8 @@ import java.util.logging.Logger
 class JoinListener(private val logger: Logger) : Listener {
     @EventHandler
     fun onJoin(e: PlayerJoinEvent) {
-        val deviceName = FloodgateApi.getInstance().getPlayer(e.player.uniqueId)?.deviceOs?.name
-        if (deviceName != null) {
-            logger.info("${e.player.displayName} joined on $deviceName device")
+        FloodgateApi.getInstance().getPlayer(e.player.uniqueId)?.deviceOs?.name?.let {
+            logger.info("${e.player.displayName} join on $it device")
         }
     }
 }
