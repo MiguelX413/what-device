@@ -1,6 +1,7 @@
 package me.miguelcr.whatdevice.commands
 
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -22,6 +23,18 @@ class DeviceCommand : CommandExecutor {
                     sender.sendMessage("Could not find player")
                     return false
                 }
+        }
+
+        if (player.name == sender.name) {
+            if (!sender.hasPermission("whatdevice.device")) {
+                sender.sendMessage("${ChatColor.RED}You lack permission to run /device on yourself")
+                return true
+            }
+        } else {
+            if (!sender.hasPermission("whatdevice.device.others")) {
+                sender.sendMessage("${ChatColor.RED}You lack permission to run /device on others")
+                return true
+            }
         }
 
         sender.sendMessage(

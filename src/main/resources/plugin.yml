@@ -9,4 +9,16 @@ website: https://miguelcr.me
 commands:
   device:
     description: Find a Floodgate player's device
-    usage: /device <Player>
+    usage: /device [Player]
+permissions:
+  whatdevice.*:
+    default: op
+    description: Give players with op everything by default
+  whatdevice.device:
+    default: op
+    description: Allows the user to run /device on theirself
+  whatdevice.device.others:
+    default: op
+    description: Allows the user to run /device on others
+    children:
+      whatdevice.device: true
