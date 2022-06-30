@@ -27,12 +27,12 @@ class DeviceCommand : CommandExecutor {
 
         if (player.name == sender.name) {
             if (!sender.hasPermission("whatdevice.device")) {
-                sender.sendMessage("${ChatColor.RED}You lack permission to run /device on yourself")
+                sender.sendMessage("${ChatColor.DARK_RED}You lack permission to run /device on yourself")
                 return true
             }
         } else {
             if (!sender.hasPermission("whatdevice.device.others")) {
-                sender.sendMessage("${ChatColor.RED}You lack permission to run /device on others")
+                sender.sendMessage("${ChatColor.DARK_RED}You lack permission to run /device on others")
                 return true
             }
         }
