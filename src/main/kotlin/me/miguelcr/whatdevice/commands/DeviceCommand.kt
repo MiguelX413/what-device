@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.geysermc.floodgate.api.FloodgateApi
 
-class DeviceCommand(private val floodgateApi: FloodgateApi) : CommandExecutor {
+class DeviceCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val player: Player = if (args.isEmpty()) {
@@ -24,7 +24,11 @@ class DeviceCommand(private val floodgateApi: FloodgateApi) : CommandExecutor {
                 }
         }
 
-        sender.sendMessage("${player.displayName}'s device: ${floodgateApi.getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java"}")
+        sender.sendMessage(
+            "${player.displayName}'s device: ${
+            FloodgateApi.getInstance().getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java"
+            }"
+        )
         return true
     }
 }
