@@ -1,7 +1,7 @@
 plugins {
     java
     id("org.jetbrains.kotlin.jvm") version "1.7.0"
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "me.miguelcr"
@@ -30,3 +30,11 @@ dependencies {
 }
 
 val targetJavaVersion = 17
+
+tasks.withType<ProcessResources> {
+    val props = mapOf("version" to version)
+    inputs.properties(props)
+    filesMatching("plugin.yml") {
+        expand(props)
+    }
+}
