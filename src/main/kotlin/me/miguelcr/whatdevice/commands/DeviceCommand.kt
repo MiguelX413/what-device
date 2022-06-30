@@ -6,9 +6,8 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.geysermc.floodgate.api.FloodgateApi
-import java.util.logging.Logger
 
-class DeviceCommand(private val logger: Logger) : CommandExecutor {
+class DeviceCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val player: Player = if (args.isEmpty()) {
@@ -27,9 +26,7 @@ class DeviceCommand(private val logger: Logger) : CommandExecutor {
 
         sender.sendMessage(
             "${player.displayName}'s device: ${
-            (FloodgateApi.getInstance() ?: run { logger.warning("Failed to get Floodgate API"); return true }).getPlayer(
-                player.uniqueId
-            )?.deviceOs?.name ?: "Java"
+            FloodgateApi.getInstance().getPlayer(player.uniqueId)?.deviceOs?.name ?: "Java"
             }"
         )
         return true
