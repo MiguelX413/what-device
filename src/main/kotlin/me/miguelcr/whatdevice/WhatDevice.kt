@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class WhatDevice : JavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
-        getCommand("device")?.setExecutor(DeviceCommand())
+        getCommand("device")?.setExecutor(DeviceCommand(logger))
         server.pluginManager.registerEvents(JoinListener(logger), this)
     }
 
